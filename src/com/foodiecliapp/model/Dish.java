@@ -31,40 +31,47 @@ public class Dish {
         private String description;
         private double price;
 
-        public Dish() {
-        }
 
         public String getId() {
             return id;
         }
-
-        public void setId(String id) {
+    /*
+       here we are put the customer obect for building pattern and also return instance for
+       only setter methods
+        */
+        public Dish setId(String id) {
             this.id = id;
+            return this;
         }
 
         public String getName() {
             return name;
         }
 
-        public void setName(String name) {
+        public Dish setName(String name) {
             this.name = name;
+            return this;
         }
 
-        public String getDescription() {
+        public String getDescription()
+        {
             return description;
         }
 
-        public void setDescription(String description) {
+        public Dish setDescription(String description) {
             this.description = description;
+            return this;
+        }
+
+        public Dish setPrice(double price){
+            this.price=price;
+            return this;
         }
 
         public double getPrice() {
             return price;
         }
 
-        public void setPrice(double price) {
-            this.price = price;
-        }
 
         @Override
         public boolean equals(Object o) {
@@ -88,5 +95,8 @@ public class Dish {
                     ", price=" + price +
                     '}';
         }
+
+    public void setPrice(String datum) {
     }
+}
 

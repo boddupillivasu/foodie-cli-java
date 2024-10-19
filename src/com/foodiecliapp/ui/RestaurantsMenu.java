@@ -1,7 +1,8 @@
 package com.foodiecliapp.ui;
 
+
 import com.foodiecliapp.controller.RestaurantController;
-import com.foodiecliapp.exception.DishNotFoundExcepton;
+import com.foodiecliapp.exception.DishNotFoundException;
 import com.foodiecliapp.exception.RestaurantExitsException;
 import com.foodiecliapp.exception.RestaurantNotFoundException;
 import com.foodiecliapp.factory.Factory;
@@ -87,9 +88,9 @@ public class RestaurantsMenu  extends Menu{
             System.out.println("Enter Menu Dish Items separated by : (D101:D102)");
             String menu = scanner.nextLine();
             Restaurant restaurant = new Restaurant();
-            restaurant.setName(name);
-                   restaurant.setAddress(address);
-                    restaurant.setMenu(Arrays.asList(menu.split(":")));
+            restaurant.setName(name)
+                    .setAddress(address)
+                    .setMenu(Arrays.asList(menu.split(":")));
 
             Restaurant updatedRestaurant = restaurantController.updateRestaurant(restaurant);
             System.out.println("Restaurant Updated Successfully");
@@ -130,11 +131,11 @@ public class RestaurantsMenu  extends Menu{
             System.out.println("Enter Dishes for Menu separated by : (D010:D009)");
             String menu = scanner.nextLine();
             Restaurant restaurant = new Restaurant();
-            restaurant.setId(id);
-            restaurant.setName(name);
-            restaurant.setAddress(address);
-            restaurant.setMenu(Arrays.asList(menu.split(":")));
-            Restaurant savedRestaurant = restaurantController.save(restaurant);
+            restaurant.setId(id)
+                    .setName(name)
+                    .setAddress(address)
+                    .setMenu(Arrays.asList(menu.split(":")));
+            Restaurant savedRestaurant = restaurantController.saveRestaurant(restaurant);
             displayRestaurant(savedRestaurant);
         } catch (RestaurantExitsException e) {
             System.out.println(e.getMessage());
@@ -162,14 +163,14 @@ public class RestaurantsMenu  extends Menu{
         System.out.printf("%-10s %-30s %-80s %-30s\n", restaurant.getId(), restaurant.getName(), restaurant.getAddress(), String.join(":", restaurant.getMenu()));
     }
 
-    public void displayMenuItems(String restaurantId) throws RestaurantNotFoundException, DishNotFoundExcepton {
+    public void displayMenuItems(String restaurantId) throws RestaurantNotFoundException, DishNotFoundException {
         displayMenuHeader("Dishes Menu Details");
         System.out.printf("%-10s %-30s %-80s %-10s\n", "Id", "Name", "Description", "Price");
         printDashLine();
         RestaurantService restaurantService = Factory.getRestaurantService();
         List<Dish> dishItems = restaurantService.getDishItems(restaurantId);
         for(Dish dish : dishItems){
-            System.out.printf("%-10s %-30s %-80s %-10s\n", dish.getId(), dish.getName(),dish.getDescription(), String.format("$%.2f", dish.getPrice()));
+            System.out.printf("%-10s %-30s %-80s %-10s\n", dish.getId(), dish.getName(), dish.getDescription(), String.format("$%.2f", dish.getPrice()));
         }
     }
 

@@ -72,6 +72,11 @@ public class Customer {
         }
 
         // Setter for password
+
+    /*
+    here we are put the customer obect for building pattern and also return instance for
+    only setter methods
+     */
         public Customer setPassword(String password) {
             this.password = password;
             return this;

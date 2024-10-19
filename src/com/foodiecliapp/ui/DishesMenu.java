@@ -1,5 +1,14 @@
 package com.foodiecliapp.ui;
 
+import com.foodiecliapp.controller.DishController;
+import com.foodiecliapp.exception.DishExitsException;
+import com.foodiecliapp.exception.DishNotFoundException;
+import com.foodiecliapp.factory.Factory;
+import com.foodiecliapp.model.Dish;
+
+import java.util.List;
+import java.util.Scanner;
+
 public class DishesMenu extends  Menu{
 
     private final DishController dishController;
@@ -125,7 +134,7 @@ public class DishesMenu extends  Menu{
 
             Dish savedDish = this.dishController.save(dish);
             displayDish(savedDish);
-        } catch (DishExistsException e) {
+        } catch (DishExitsException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Some internal error occurred. Please try again !");
@@ -154,5 +163,4 @@ public class DishesMenu extends  Menu{
         System.out.printf("%-10s %-30s %-80s %-10s\n", dish.getId(), dish.getName(), dish.getDescription(), String.format("$%.2f", dish.getPrice()));
 
     }
-
 }

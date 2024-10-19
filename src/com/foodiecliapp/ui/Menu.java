@@ -1,11 +1,18 @@
 package com.foodiecliapp.ui;
 
+import com.foodiecliapp.controller.DishController;
+import com.foodiecliapp.factory.Factory;
+
 import java.util.Scanner;
 
 public class Menu {
 
     public Menu() {
 
+    }
+    private  void dishList(){
+        DishController dishControllers = Factory.getDishController();
+        System.out.println( dishControllers.getDisesList());
     }
 
     public void displayMenu() {
@@ -18,7 +25,7 @@ public class Menu {
                 System.out.println("--------------------------");
                 System.out.println("1. Customer Section");
                 System.out.println("2. Restaurant Section");
-                System.out.println("3. Dishes Section");
+                System.out.println("3. Dishes Menu");
                 System.out.println("4. Order Section ");
                 System.out.println("5. Exit");
                 System.out.println("Please enter your choice (1-5)");
@@ -28,7 +35,7 @@ public class Menu {
                     case 1 -> new CustomerMenu().displayMenu();
                     case 2 -> new RestaurantsMenu().displayMenu();
                     case 3 -> new DishesMenu().displayMenu();
-                    case 4 -> new OrdersMenu().displayMenu();
+                    case 4 -> new OrderMenu().displayMenu();
                     case 5 -> {
                         System.out.println("Thanks for choosing Foodie App, See you again !");
                         System.exit(0);

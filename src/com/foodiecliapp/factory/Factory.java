@@ -3,12 +3,15 @@ package com.foodiecliapp.factory;
 
 import com.foodiecliapp.controller.CustomerController;
 import com.foodiecliapp.controller.DishController;
+import com.foodiecliapp.controller.OrderController;
 import com.foodiecliapp.controller.RestaurantController;
 import com.foodiecliapp.repo.CustomerRepository;
 import com.foodiecliapp.repo.DishRepository;
+import com.foodiecliapp.repo.OrderRepository;
 import com.foodiecliapp.repo.RestaurantRepository;
 import com.foodiecliapp.service.CustomerServiceImpl;
 import com.foodiecliapp.service.DishServiceImpl;
+import com.foodiecliapp.service.OrderServiceImpl;
 import com.foodiecliapp.service.RestaurantServiceImpl;
 import com.foodiecliapp.utill.CsvReader;
 
@@ -54,6 +57,17 @@ public class Factory {
         return Holder.RESTAURANT_CONTROLLER;
     }
 
+    public static OrderRepository getOrderRepository() {
+        return Holder.ORDER_REPOSITORY;
+    }
+
+    public static OrderServiceImpl getOrderService() {
+        return Holder.ORDER_SERVICE;
+    }
+
+    public static OrderController getOrderController() {
+        return Holder.ORDER_CONTROLLER;
+    }
 
     private static class Holder {
 
@@ -71,6 +85,9 @@ public class Factory {
         private static final RestaurantServiceImpl RESTAURANT_SERVICE = new RestaurantServiceImpl(RESTAURANT_REPOSITORY);
         private static final RestaurantController RESTAURANT_CONTROLLER = new RestaurantController(RESTAURANT_SERVICE);
 
+        private static final OrderRepository ORDER_REPOSITORY = new OrderRepository();
+        private static final OrderServiceImpl ORDER_SERVICE = new OrderServiceImpl(ORDER_REPOSITORY);
+        private static final OrderController ORDER_CONTROLLER = new OrderController(ORDER_SERVICE);
 
     }
 
