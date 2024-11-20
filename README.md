@@ -46,9 +46,3 @@ Once the application is running, follow the on-screen prompts to navigate throug
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
-
-For any questions, feedback, or support, please contact:
-
-- E-mail: hello@trainingmug.com
-- GitHub: [Your GitHub Profile](https://github.com/madhusamala-dev)
